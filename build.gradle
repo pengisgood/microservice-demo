@@ -1,0 +1,51 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.10.RELEASE' apply false
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE' apply false
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'tech.codinglife'
+    version = '0.0.1-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    ext {
+        set('springCloudVersion', "Greenwich.SR4")
+    }
+
+    repositories {
+        // ali mirrors
+        //maven { url 'https://maven.aliyun.com/nexus/content/repositories/spring' }
+        //maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+        //maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
