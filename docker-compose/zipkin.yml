@@ -1,0 +1,35 @@
+version: '3'
+services:
+    zipkin-mysql:
+        image: openzipkin/zipkin-mysql:2.19.2
+        container_name: zipkin-mysql
+        ports:
+            - 3306:3306
+
+        # The zipkin process services the UI, and also exposes a POST endpoint that
+        # instrumentation can send trace data to. Scribe is disabled by default.
+    zipkin:
+        image: openzipkin/zipkin:2.19.2
+        container_name: zipkin
+        environment:
+            # * `STORAGE_TYPE`: SpanStore implementation: one of `mem`, `mysql`, `cassandra`, `elasticsearch`
+            - STORAGE_TYPE=mem
+            # Point the zipkin at the storage backend
+            #            - MYSQL_HOST=localhost
+            # Default port is 3306
+            #            - MYSQL_TCP_PORT=3306
+            #            - MYSQL_USER=zipkin
+            #            - MYSQL_PASS=zipkin
+            # Uncomment to enable scribe
+            # - SCRIBE_ENABLED=true
+            # Uncomment to enable self-tracing
+            # - SELF_TRACING_ENABLED=true
+            # Uncomment to enable debug logging
+            # - JAVA_OPTS=-Dlogging.level.zipkin2=DEBUG
+        ports:
+            # Port used for the Zipkin UI and HTTP Api
+            - 9411:9411
+            # Uncomment if you set SCRIBE_ENABLED=true
+            # - 9410:9410
+        depends_on:
+            - zipkin-mysql

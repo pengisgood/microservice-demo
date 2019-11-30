@@ -5,3 +5,7 @@ include ':eureka-server'
 include ':config-server'
 include ':config-client'
 include ':config-client-bus'
+
+include ':sleuth-user'
+include ':sleuth-notification'
+include ':sleuth-order'
