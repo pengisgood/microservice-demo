@@ -49,3 +49,7 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
+
+subprojects {
+    defaultTasks 'bootRun'
+}
