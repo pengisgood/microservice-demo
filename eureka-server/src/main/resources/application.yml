@@ -1,0 +1,17 @@
+# Give a name to the eureka server
+spring:
+    application:
+        name: eureka-server
+
+server:
+    port: 9999
+
+eureka:
+    client:
+        # eureka by default will register itself as a client. So, we need to set it to false.
+        register-with-eureka: false
+        # Eureka clients fetches the registry information from the server and caches it locally.
+        fetch-registry: false
+        service-url:
+            # Eureka server will try to replicate to localhost:8761 because it's default and if you didn't specify service-url for eureka when not use the default port.
+            defaultZone: http://localhost:9999/eureka
