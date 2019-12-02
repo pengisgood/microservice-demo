@@ -4,6 +4,7 @@ spring:
         name: eureka-server
 
 server:
+    # default port id 8761
     port: 9999
 
 eureka:
