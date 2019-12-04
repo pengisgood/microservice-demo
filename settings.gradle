@@ -9,3 +9,6 @@ include ':config-client-bus'
 include ':sleuth-user'
 include ':sleuth-notification'
 include ':sleuth-order'
+
+include ':admin-server'
+include ':admin-client'
