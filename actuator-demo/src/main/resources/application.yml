@@ -1,0 +1,14 @@
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: ALWAYS
+        shutdown:
+            # 默认为false
+            enabled: true
+
+server:
+    port: 9001

@@ -12,3 +12,5 @@ include ':sleuth-order'
 
 include ':admin-server'
 include ':admin-client'
+
+include ':actuator-demo'
