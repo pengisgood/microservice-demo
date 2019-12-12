@@ -18,3 +18,5 @@ include ':actuator-demo'
 include ':swagger-demo'
 
 include ':ribbon-client'
+
+include ':api-gateway'

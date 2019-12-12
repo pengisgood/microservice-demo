@@ -1,0 +1,36 @@
+spring:
+    application:
+        name: api-gateway
+
+server:
+    port: 6666
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:9999/eureka
+zuul:
+    routes:
+        ribbonapi:
+            path: /ribbonapi/**
+            serviceId: ribbon-client
+        eurekaapi:
+            path: /eurekaapi/**
+            serviceId: eureka-client
+        actuator:
+            path: /actuator/**
+            url: http://localhost:9001
+            strip-prefix: false
+        swagger:
+            path: /swagger/**
+            url: http://localhost:9002
+            #serviceId: swagger-api
+    prefix: /v1
+
+#ribbon:
+#    eureka:
+#        enabled: false
+#
+#swagger-api:
+#    ribbon:
+#        listOfServers: http://localhost:9002
