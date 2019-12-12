@@ -16,3 +16,5 @@ include ':admin-client'
 
 include ':actuator-demo'
 include ':swagger-demo'
+
+include ':ribbon-client'
