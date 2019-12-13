@@ -3,7 +3,7 @@ package tech.codinglife.service;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient("eureka-client")
+@FeignClient(value = "eureka-client", fallback = HiError.class)
 public interface FeignService {
 
     @GetMapping("/hi")
